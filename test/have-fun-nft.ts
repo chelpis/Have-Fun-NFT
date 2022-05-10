@@ -21,6 +21,14 @@ describe("Have Fun NFT", function () {
     await haveFunNFT.deployed();
   });
 
+  it("airdrop", async function () {
+    await haveFunNFT
+      .connect(chelpis)
+      .airdrop(Array.from({ length: 34 }, (_, i) => i + 1));
+
+    expect(await haveFunNFT.balanceOf(target.address)).to.equal(34);
+  });
+
   it("Max Supply Get", async function () {
     expect(await haveFunNFT.connect(chelpis).maxSupply()).to.equal(34);
   });
