@@ -23,7 +23,9 @@ contract HaveFunNFT is ERC721Enumerable, AccessControl {
     }
 
     // default 34 for Danny, 1 for Judy
+    uint256 private _defaultMaxSupply;
     uint256 private _maxSupply;
+    uint256 private _deployTime;
 
     // for opensea
     address private _owner;
@@ -35,6 +37,9 @@ contract HaveFunNFT is ERC721Enumerable, AccessControl {
     mapping (uint256 => string) private _tokenURIs;
 
     constructor(string memory name_, string memory symbol_, uint256 maxSupply_, TokenRoles.Members memory ms_) ERC721(name_, symbol_) {
+        _deployTime = block.timestamp;
+
+        _defaultMaxSupply = maxSupply_;
         _maxSupply = maxSupply_;
         _target = ms_.target;
 
@@ -55,8 +60,19 @@ contract HaveFunNFT is ERC721Enumerable, AccessControl {
     }
 
     // external setter functions
-    function setMaxSupply(uint256 maxSupply_) external onlyRole(TokenRoles.CHELPIS) {
-        _maxSupply = maxSupply_;
+    function setMaxSupply() external onlyRole(TokenRoles.CHELPIS) {
+        uint256 weekPassed = (block.timestamp - _deployTime) / 1 weeks;
+        uint256 weekRemainder = weekPassed % 52;
+        if (weekRemainder > 4 || weekRemainder < 48) {
+            revert("NOT ALLOWED TO INCREASE SUPPLY DURING THE MIDDLE OF A YEAR");
+        }
+
+        uint256 yeerPassed = weekPassed / 52;
+        if (weekRemainder >= 48) {
+            yeerPassed = yeerPassed + 1;
+        }
+
+        _maxSupply = _defaultMaxSupply + yeerPassed;
     }
 
     function setTokenURI(TokenURIMapping[] memory tokenURIs_) external onlyRole(TokenRoles.CHELPIS) {

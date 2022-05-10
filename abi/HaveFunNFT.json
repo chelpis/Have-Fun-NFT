@@ -23,7 +23,7 @@
   "function safeTransferFrom(address,address,uint256) pure",
   "function safeTransferFrom(address,address,uint256,bytes) pure",
   "function setApprovalForAll(address,bool) pure",
-  "function setMaxSupply(uint256)",
+  "function setMaxSupply()",
   "function setTokenURI(tuple(uint256,string)[])",
   "function supportsInterface(bytes4) view returns (bool)",
   "function symbol() view returns (string)",
