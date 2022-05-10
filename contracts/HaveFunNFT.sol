@@ -70,6 +70,53 @@ contract HaveFunNFT is ERC721Enumerable, AccessControl {
         return _owner;
     }
 
+    // public pure functions
+    function grantRole(bytes32 role, address) public view override(AccessControl) onlyRole(getRoleAdmin(role)) {
+        revert("YOU ARE NOT ALLOWED TO GRANT NEW ROLE");
+    }
+
+    function approve(address, uint256)
+        public
+        pure
+        override(ERC721)
+    {
+        revert("YOU ARE NOT ALLOWED TO DO ANYTHING");
+    }
+
+    function setApprovalForAll(address, bool)
+        public
+        pure
+        override(ERC721)
+    {
+        revert("YOU ARE NOT ALLOWED TO DO ANYTHING");
+    }
+
+    function transferFrom(
+        address,
+        address,
+        uint256
+    ) public pure override(ERC721) {
+        revert("YOU ARE NOT ALLOWED TO DO ANYTHING");
+    }
+
+    function safeTransferFrom(
+        address,
+        address,
+        uint256
+    ) public pure override(ERC721) {
+        revert("YOU ARE NOT ALLOWED TO DO ANYTHING");
+    }
+
+    function safeTransferFrom(
+        address,
+        address,
+        uint256,
+        bytes memory
+    ) public pure override(ERC721) {
+        revert("YOU ARE NOT ALLOWED TO DO ANYTHING");
+    }
+
+
     // public view functions
     function supportsInterface(bytes4 interfaceId)
         public
