@@ -1,0 +1,6 @@
+{
+  "devDependencies": {
+    "hardhat": "^2.9.3",
+    "hardhat-abi-exporter": "^2.9.0"
+  }
+}
