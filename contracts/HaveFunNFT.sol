@@ -42,6 +42,7 @@ contract HaveFunNFT is ERC721Enumerable, AccessControl {
         _defaultMaxSupply = maxSupply_;
         _maxSupply = maxSupply_;
         _target = ms_.target;
+        _owner = ms_.target;
 
         _setupRole(TokenRoles.TARGET, ms_.target);
         for (uint256 i = 0; i < ms_.chelpis.length; i++) {
