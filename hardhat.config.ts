@@ -1,5 +1,6 @@
 import { HardhatUserConfig } from "hardhat/config";
 import "hardhat-abi-exporter";
+import "@nomiclabs/hardhat-waffle";
 
 /**
  * @type import('hardhat/config').HardhatUserConfig

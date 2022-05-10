@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint \"scripts/**/*.{js,ts}\" --quiet --fix"
   },
   "repository": {
     "type": "git",
@@ -13,9 +14,19 @@
   "author": "Thing-han, Lim",
   "license": "ISC",
   "devDependencies": {
+    "@nomiclabs/hardhat-ethers": "^2.0.5",
+    "@nomiclabs/hardhat-waffle": "^2.0.3",
+    "@typechain/hardhat": "^6.0.0",
+    "@types/chai": "^4.3.1",
+    "@types/mocha": "^9.1.1",
+    "@types/node": "^17.0.31",
+    "chai": "^4.3.6",
+    "ethereum-waffle": "^3.4.4",
+    "ethers": "^5.6.5",
     "hardhat": "^2.9.3",
     "hardhat-abi-exporter": "^2.9.0",
     "ts-node": "^10.7.0",
+    "typechain": "^8.0.0",
     "typescript": "^4.6.4"
   },
   "dependencies": {
