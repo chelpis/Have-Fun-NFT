@@ -1,6 +1,21 @@
-import { HardhatUserConfig } from "hardhat/config";
+import { HardhatUserConfig, task } from "hardhat/config";
 import "hardhat-abi-exporter";
 import "@nomiclabs/hardhat-waffle";
+import { NetworkUserConfig } from "hardhat/types";
+
+task("networks", "Prints the list of networks", async () => {
+  if (typeof config.networks == undefined) {
+    console.log("No supported network");
+    return;
+  }
+
+  const networks = Object.keys(config.networks as NetworkUserConfig).map(
+    (key, _) => {
+      return key;
+    }
+  );
+  console.log(networks);
+});
 
 /**
  * @type import('hardhat/config').HardhatUserConfig
@@ -38,6 +53,12 @@ const config: HardhatUserConfig = {
   networks: {
     hardhat: {
       accounts: genPrivateKey(20),
+    },
+    ropsten: {
+      url: "https://ropsten.infura.io/",
+      accounts: [
+        "0x0000000000000000000000000000000000000000000000000000000000000001",
+      ],
     },
   },
 };
