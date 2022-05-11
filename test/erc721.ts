@@ -1,12 +1,6 @@
 import { expect } from "chai";
 
 export default function () {
-  beforeEach(async function () {
-    await this.haveFunNFT
-      .connect(this.chelpis)
-      .airdrop(Array.from({ length: 34 }, (_, i) => i + 1));
-  });
-
   it("transfer reverted", async function () {
     await expect(
       this.haveFunNFT

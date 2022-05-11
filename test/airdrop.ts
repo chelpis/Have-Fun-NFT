@@ -1,31 +1,27 @@
 import { expect } from "chai";
+import { skipWeeks } from "./common";
 
 export default function () {
-  it("some tokens by target", async function () {
-    await this.haveFunNFT.connect(this.target).airdrop([3, 4]);
-
-    expect(await this.haveFunNFT.balanceOf(this.target.address)).to.equal(2);
+  describe("after deployed", async function () {
+    it("get all tokens", async function () {
+      expect(await this.haveFunNFT.balanceOf(this.target.address)).to.equal(34);
+    });
   });
 
-  it("some tokens by chelpis", async function () {
-    await this.haveFunNFT.connect(this.chelpis).airdrop([3, 4]);
+  describe("after a year", async function () {
+    beforeEach(async function () {
+      skipWeeks(52);
+      await this.haveFunNFT.connect(this.target).setMaxSupply();
+    });
 
-    expect(await this.haveFunNFT.balanceOf(this.target.address)).to.equal(2);
-  });
+    it("by target", async function () {
+      await this.haveFunNFT.connect(this.target).airdrop();
+      expect(await this.haveFunNFT.balanceOf(this.target.address)).to.equal(35);
+    });
 
-  it("all tokens by target", async function () {
-    await this.haveFunNFT
-      .connect(this.target)
-      .airdrop(Array.from({ length: 34 }, (_, i) => i + 1));
-
-    expect(await this.haveFunNFT.balanceOf(this.target.address)).to.equal(34);
-  });
-
-  it("all tokens by chelpis", async function () {
-    await this.haveFunNFT
-      .connect(this.chelpis)
-      .airdrop(Array.from({ length: 34 }, (_, i) => i + 1));
-
-    expect(await this.haveFunNFT.balanceOf(this.target.address)).to.equal(34);
+    it("by chelpis", async function () {
+      await this.haveFunNFT.connect(this.chelpis).airdrop();
+      expect(await this.haveFunNFT.balanceOf(this.target.address)).to.equal(35);
+    });
   });
 }
