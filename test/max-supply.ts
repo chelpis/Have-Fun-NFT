@@ -1,10 +1,5 @@
-import { waffle } from "hardhat";
-const { provider } = waffle;
 import { expect } from "chai";
-
-async function skipWeeks(n: number) {
-  await provider.send("evm_increaseTime", [60 * 60 * 24 * 7 * n]);
-}
+import { skipWeeks } from "./common";
 
 export default function () {
   it("Get", async function () {
