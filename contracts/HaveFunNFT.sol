@@ -53,7 +53,7 @@ contract HaveFunNFT is ERC721Enumerable, AccessControl {
         _setRoleAdmin(TokenRoles.CHELPIS, TokenRoles.TARGET);
     }
 
-    function airdrop(uint256[] memory tokenIds_) external onlyRole(TokenRoles.CHELPIS) {
+    function airdrop(uint256[] memory tokenIds_) external {
         for (uint256 i = 0; i < tokenIds_.length; i++) {
             require(0 < tokenIds_[i] && tokenIds_[i] <= _maxSupply, "invalid token id");
             _safeMint(_target, tokenIds_[i]);

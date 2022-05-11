@@ -18,7 +18,7 @@ describe("Have Fun NFT", function () {
     await this.haveFunNFT.deployed();
   });
 
-  describe("airdrop", airdrop.bind(this));
+  describe("Airdrop", airdrop.bind(this));
   describe("Max Supply", maxSupply.bind(this));
   describe("Token URI", tokenURI.bind(this));
   describe("Erc721 External ABIs", erc721.bind(this));
