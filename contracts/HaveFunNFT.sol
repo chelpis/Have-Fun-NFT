@@ -77,6 +77,10 @@ contract HaveFunNFT is ERC721Enumerable, AccessControl {
         }
     }
 
+    function congratulateTarget(string memory msg_) external {
+        emit Contgrats(msg_);
+    }
+
     // external view functions
     function tokenURI(uint256 tokenId_)
         public
@@ -152,4 +156,5 @@ contract HaveFunNFT is ERC721Enumerable, AccessControl {
         return super.supportsInterface(interfaceId);
     }
 
+    event Contgrats(string);
 }
