@@ -81,6 +81,15 @@ contract HaveFunNFT is ERC721Enumerable, AccessControl {
     }
 
     // external view functions
+    function tokenURI(uint256 tokenId_)
+        public
+        view
+        override(ERC721)
+        returns (string memory)
+    {
+        return _tokenURIs[tokenId_];
+    }
+
     function maxSupply() external view returns (uint256) {
         return _maxSupply;
     }
