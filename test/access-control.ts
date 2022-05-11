@@ -5,13 +5,13 @@ import { skipWeeks } from "./common";
 export default function () {
   it("setMaxSupply reverted, call by target", async function () {
     skipWeeks(52);
-    await expect(this.haveFunNFT.connect(this.target).setMaxSupply()).to.be
-      .reverted;
+    expect(await this.haveFunNFT.connect(this.target).setMaxSupply());
   });
 
   it("setMaxSupply succeeded, call by chelpis", async function () {
     skipWeeks(52);
-    expect(await this.haveFunNFT.connect(this.chelpis).setMaxSupply());
+    await expect(this.haveFunNFT.connect(this.chelpis).setMaxSupply()).to.be
+      .reverted;
   });
 
   it("setTokenURI reverted, call by target", async function () {

@@ -61,16 +61,13 @@ contract HaveFunNFT is ERC721Enumerable, AccessControl {
     }
 
     // external setter functions
-    function setMaxSupply() external onlyRole(TokenRoles.CHELPIS) {
-        uint256 weekPassed = (block.timestamp - _deployTime) / 1 weeks;
-        uint256 weekRemainder = weekPassed % 52;
-        require (weekRemainder <= 4 || weekRemainder >= 48, "NOT ALLOWED TO INCREASE SUPPLY DURING THE MIDDLE OF A YEAR");
-
-        uint256 yeerPassed = weekPassed / 52;
-        if (weekRemainder >= 48) {
+    function setMaxSupply() external onlyRole(TokenRoles.TARGET) {
+        uint256 yeerPassed = 0;
+        uint256 time = _deployTime + 48 weeks;
+        for (;time < block.timestamp; time += 52 weeks) {
             yeerPassed = yeerPassed + 1;
         }
-
+        require(block.timestamp - (time - 52 weeks) < 8 weeks, "NOT ALLOWED TO INCREASE SUPPLY DURING THE MIDDLE OF A YEAR");
         _maxSupply = _defaultMaxSupply + yeerPassed;
     }
 
