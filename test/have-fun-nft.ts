@@ -4,6 +4,7 @@ const { provider } = waffle;
 import airdrop from "./airdrop";
 import maxSupply from "./max-supply";
 import tokenURI from "./token-uri";
+import erc721 from "./erc721";
 
 describe("Have Fun NFT", function () {
   beforeEach(async function () {
@@ -20,4 +21,5 @@ describe("Have Fun NFT", function () {
   describe("airdrop", airdrop.bind(this));
   describe("Max Supply", maxSupply.bind(this));
   describe("Token URI", tokenURI.bind(this));
+  describe("Erc721 External ABIs", erc721.bind(this));
 });
