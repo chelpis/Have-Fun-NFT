@@ -8,7 +8,7 @@
   "event RoleRevoked(bytes32 indexed,address indexed,address indexed)",
   "event Transfer(address indexed,address indexed,uint256 indexed)",
   "function DEFAULT_ADMIN_ROLE() view returns (bytes32)",
-  "function airdrop(uint256[])",
+  "function airdrop()",
   "function approve(address,uint256) pure",
   "function balanceOf(address) view returns (uint256)",
   "function congratulateTarget(string)",
