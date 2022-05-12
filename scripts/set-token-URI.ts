@@ -6,7 +6,7 @@ async function main() {
     process.env.DEPLOYED_ADDRESS as string
   );
 
-  await haveFunNFT.setTokenURI(JSON.parse(process.env.TOKEN_URIS as string));
+  await haveFunNFT.setTokenURIPrefix(process.env.TOKEN_URI_PREFIX);
   console.log("Set contract token URIs succeeded.");
 }
 
