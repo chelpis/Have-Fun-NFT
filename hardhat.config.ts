@@ -1,7 +1,11 @@
+import * as dotenv from "dotenv";
+
 import { HardhatUserConfig, task } from "hardhat/config";
 import "hardhat-abi-exporter";
 import "@nomiclabs/hardhat-waffle";
 import { NetworkUserConfig } from "hardhat/types";
+
+dotenv.config();
 
 task("networks", "Prints the list of networks", async () => {
   if (typeof config.networks == undefined) {
@@ -55,10 +59,8 @@ const config: HardhatUserConfig = {
       accounts: genPrivateKey(20),
     },
     ropsten: {
-      url: "https://ropsten.infura.io/",
-      accounts: [
-        "0x0000000000000000000000000000000000000000000000000000000000000001",
-      ],
+      url: process.env.ROPSTEN_URL,
+      accounts: [process.env.PRIVATE_KEY as string],
     },
   },
 };
