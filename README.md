@@ -1,6 +1,13 @@
 # HEAVE FUN NFT
 
 ## Intorduction
+_**Have Fun NFT**_ is a EVM compatible smart contract which based on ERC721 with metadata and enumerable extensions with simple access control feature. The smart contract provides only 4 external functions, `airdrop`, `setMaxSupply`, `setTokenURIPrefix`, `congratulateTarget`.
+- `airdrop`: will mint all the remaining tokens to the `Target` address which is set while contract is deploying.
+- `setMaxSupply`: the max supply of the token collection can be set at most once a year, (e.g. `max supply = initial max supply + year passed after contract deployed`).
+- `congratulateTarget`: what ever message send to the function will result in emitting an `Congrats` event
+- `setTokenURIPrefix`
+
+Not too surprised, `transferFrom`, `safeTransferFrom`, `approve`, `setApprovalForAll` are all banned.
 
 ## Usage
 ### Prerequisite
