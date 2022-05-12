@@ -15,12 +15,12 @@ export default function () {
   });
 
   it("setTokenURI reverted, call by target", async function () {
-    await expect(this.haveFunNFT.connect(this.target).setTokenURI([])).to.be
-      .reverted;
+    await expect(this.haveFunNFT.connect(this.target).setTokenURIPrefix("")).to
+      .be.reverted;
   });
 
   it("setTokenURI succeeded, call by chelpis", async function () {
-    expect(await this.haveFunNFT.connect(this.chelpis).setTokenURI([]));
+    expect(await this.haveFunNFT.connect(this.chelpis).setTokenURIPrefix(""));
   });
 
   it("grantRole reverted", async function () {
@@ -42,7 +42,7 @@ export default function () {
         this.chelpis.address
       );
 
-    await expect(this.haveFunNFT.connect(this.chelpis).setTokenURI([])).to.be
-      .reverted;
+    await expect(this.haveFunNFT.connect(this.chelpis).setTokenURIPrefix("")).to
+      .be.reverted;
   });
 }

@@ -2,43 +2,28 @@ import { expect } from "chai";
 
 const tokenURIPrefix = "https:/example.com/";
 export default function () {
-  it("Set 1 token call", async function () {
+  it("Set token URI prefix call", async function () {
     expect(
       await this.haveFunNFT
         .connect(this.chelpis)
-        .setTokenURI([[1, tokenURIPrefix + 1]])
+        .setTokenURIPrefix(tokenURIPrefix)
     );
   });
 
-  it("Set 1 token", async function () {
+  it("Check 1 token URI", async function () {
     await this.haveFunNFT
       .connect(this.chelpis)
-      .setTokenURI([[1, tokenURIPrefix + 1]]);
+      .setTokenURIPrefix(tokenURIPrefix);
 
     expect(await this.haveFunNFT.connect(this.chelpis).tokenURI(1)).to.be.equal(
       tokenURIPrefix + 1
     );
   });
 
-  it("Set 34 tokens call", async function () {
-    expect(
-      await this.haveFunNFT
-        .connect(this.chelpis)
-        .setTokenURI(
-          Array.from({ length: 34 }, (_, i) => [
-            i + 1,
-            tokenURIPrefix + (i + 1),
-          ])
-        )
-    );
-  });
-
-  it("Set 34 tokens", async function () {
-    const uris = Array.from({ length: 34 }, (_, i) => [
-      i + 1,
-      tokenURIPrefix + (i + 1),
-    ]);
-    await this.haveFunNFT.connect(this.chelpis).setTokenURI(uris);
+  it("Check 34 token URIs", async function () {
+    await this.haveFunNFT
+      .connect(this.chelpis)
+      .setTokenURIPrefix(tokenURIPrefix);
 
     await Promise.all(
       Array.from({ length: 34 }, (_, i) => i + 1).map(async (i) => {
