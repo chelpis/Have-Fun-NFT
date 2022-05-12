@@ -62,6 +62,12 @@ const config: HardhatUserConfig = {
       url: process.env.ROPSTEN_URL,
       accounts: [process.env.PRIVATE_KEY as string],
     },
+    mumbai: {
+      url: process.env.POLYGON_MUMBAI_URL,
+      accounts: [
+        "0xc1ce8c29ed57cb90819375354e72e5ad2a4c1b50fe5690fb52a841a454f74a2c",
+      ],
+    },
   },
 };
 
