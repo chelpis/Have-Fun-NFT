@@ -8,7 +8,7 @@ import { NetworkUserConfig } from "hardhat/types";
 dotenv.config();
 
 task("networks", "Prints the list of networks", async () => {
-  if (typeof config.networks == undefined) {
+  if (typeof config.networks === undefined) {
     console.log("No supported network");
     return;
   }
