@@ -58,15 +58,23 @@ const config: HardhatUserConfig = {
     hardhat: {
       accounts: genPrivateKey(20),
     },
+    mainnet: {
+      url: process.env.MAINNET_URL,
+      accounts: [process.env.PRIVATE_KEY as string],
+    },
     ropsten: {
       url: process.env.ROPSTEN_URL,
       accounts: [process.env.PRIVATE_KEY as string],
     },
-    mumbai: {
+    polygonmMumbai: {
       url: process.env.POLYGON_MUMBAI_URL,
       accounts: [
         "0xc1ce8c29ed57cb90819375354e72e5ad2a4c1b50fe5690fb52a841a454f74a2c",
       ],
+    },
+    polygonMainnet: {
+      url: process.env.POLYGON_MAINNET_URL,
+      accounts: [process.env.PRIVATE_KEY as string],
     },
   },
 };
