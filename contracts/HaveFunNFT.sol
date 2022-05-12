@@ -33,8 +33,7 @@ contract HaveFunNFT is ERC721Enumerable, AccessControl {
     // Danny or Judy's address
     address private _target;
 
-    // token id -> token URI mapping
-    mapping (uint256 => string) private _tokenURIs;
+    string private _tokenURIPrefix;
 
     constructor(string memory name_, string memory symbol_, uint256 maxSupply_, TokenRoles.Members memory ms_) ERC721(name_, symbol_) {
         _deployTime = block.timestamp;
@@ -74,10 +73,8 @@ contract HaveFunNFT is ERC721Enumerable, AccessControl {
         _maxSupply = _defaultMaxSupply + yeerPassed;
     }
 
-    function setTokenURI(TokenURIMapping[] memory tokenURIs_) external onlyRole(TokenRoles.CHELPIS) {
-        for (uint256 i = 0; i < tokenURIs_.length; i++) {
-            _tokenURIs[tokenURIs_[i].tokenId] = tokenURIs_[i].tokenURI;
-        }
+    function setTokenURIPrefix(string memory tokenURIPrefix_) external onlyRole(TokenRoles.CHELPIS) {
+        _tokenURIPrefix = tokenURIPrefix_;
     }
 
     function congratulateTarget(string memory msg_) external {
@@ -85,15 +82,6 @@ contract HaveFunNFT is ERC721Enumerable, AccessControl {
     }
 
     // external view functions
-    function tokenURI(uint256 tokenId_)
-        public
-        view
-        override(ERC721)
-        returns (string memory)
-    {
-        return _tokenURIs[tokenId_];
-    }
-
     function maxSupply() external view returns (uint256) {
         return _maxSupply;
     }
@@ -157,6 +145,10 @@ contract HaveFunNFT is ERC721Enumerable, AccessControl {
         returns (bool)
     {
         return super.supportsInterface(interfaceId);
+    }
+
+    function _baseURI() internal view override(ERC721) returns (string memory) {
+        return _tokenURIPrefix;
     }
 
     event Contgrats(string);
