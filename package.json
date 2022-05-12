@@ -6,7 +6,8 @@
   "scripts": {
     "test": "npx hardhat test --no-compile --parallel",
     "lint": "eslint \"scripts/**/*.{js,ts}\" --quiet --fix",
-    "deploy": "npx hardhat run scripts/deploy.ts"
+    "deploy": "npx hardhat run scripts/deploy.ts",
+    "seturi": "npx hardhat run scripts/set-token-uri.ts"
   },
   "repository": {
     "type": "git",
