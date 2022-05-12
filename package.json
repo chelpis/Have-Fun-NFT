@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "npx hardhat test --no-compile --parallel",
-    "lint": "eslint \"scripts/**/*.{js,ts}\" --quiet --fix"
+    "lint": "eslint \"scripts/**/*.{js,ts}\" --quiet --fix",
+    "deploy": "npx hardhat run scripts/deploy.ts"
   },
   "repository": {
     "type": "git",
