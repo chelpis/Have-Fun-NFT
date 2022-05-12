@@ -1,4 +1,7 @@
 # Have Fun NFT Technical Specification v1.0.0
+Author(s): Han
+Created On: 2022/05/12
+
 ## Introduction
 ### Overview
 Have Fun NFT 是個基於 EIP-721 標準，且實作了 metadata, enumerable extension, 並負加了 access control 的智能合約。
