@@ -79,6 +79,7 @@ token id: `1 ≤ token id ≤ max supply`
 ## Futre Work
 - Gas Consumption Optimization
 - 能有更有趣或更客製化的限制 ？
+    - can transfer but with royalty payments ？
 - 多個 target，改用 EIP-1155 ？
 - Proxy pattern, upgradable contract ?
 
